@@ -1,0 +1,12 @@
+def simple_recurrent_network(x, n):
+
+k=  tf.shape( x )[ 0 ];
+m=  tf.shape( x )[ 1 ];
+W= tf.Variable(shape=[n,m],label='W');
+U= tf.Variable(shape=[n,n],label='U');
+b= tf.Variable(shape=[1,n],label='b');
+s= tf.Variable(shape=[k,n],label='s');
+t= tf.sigmoid( linear(W,x)+ linear(U,s)+b);
+y= update(s,t);
+
+return y
